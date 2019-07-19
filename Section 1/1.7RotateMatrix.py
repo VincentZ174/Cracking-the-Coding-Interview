@@ -1,3 +1,4 @@
+#swap numbers
 def swap(i, j, k, l):
 	temp = matrix[i][j]
 	matrix[i][j] = matrix[k][l]
@@ -43,6 +44,8 @@ def rotateMatrix90(matrix):
 N = int(raw_input("What size would you like the matrix to be: "))
 
 matrix = initializeMatrix(N)
+print "----------Original Matrix----------"
 displayMatrix(matrix)
 rotateMatrix90(matrix)
+print "----------Rotated Matrix----------"
 displayMatrix(matrix)
