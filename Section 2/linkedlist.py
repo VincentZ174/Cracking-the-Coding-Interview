@@ -1,47 +1,49 @@
 class Node:
-	#constructor
-	def __init__(self, val):
-		self.val = val # set node value
-		self.next = None #set end of linked list to None
-	def traverse(self):
-		node = self # start at head
-		while node != None: # while not at end of linked list
-			print node.val 
-			node = node.next
-	def appendToTail(self, val):
-		end = Node(val)
-		n = self
-		while(n.next != None):
-			n = n.next
-		n.next = end
 
-	def delete(self, val):
-		temp = self
+    def __init__(self, value, nextNode=None, prevNode=None):
+        self.value = value
+        self.next = nextNode
+        self.prev = prevNode
 
-		if(temp is not None):
-			if(temp.val == val):
-				self = temp.next
-				temp = None
-				return
+    def __str__(self):
+        return str(self.value)
 
-		while(temp is not None):
-			if(temp.val == val):
-				break
-			prev = temp
-			temp = temp.next
 
-		if(temp == None):
-			return
+class LinkedList:
 
-		prev.next = temp.next
-		temp = None
+    def __init__(self, values=None):
+        self.head = None
+        self.tail = None
+        if values is not None:
+            self.add_multiple(values)
 
-linkedList = Node(12)
-linkedList.appendToTail(50)
-linkedList.appendToTail(30)
-linkedList.appendToTail(40)
+    def __len__(self):
+        length = 0
+        node = self.head
+        while node:
+            length = length + 1
+            node = node.next
+        return length
 
-print "----------Linked List----------"
-linkedList.traverse()
-print "----------Linked List after Deleting----------"
-linkedList.traverse()
+    def traverse(self):
+        current = self.head
+        while current:
+            if current.next != None:
+                print str(current) + " ->",
+            else:
+                print current.value
+            current = current.next
+
+
+    def add(self, value):
+        if self.head == None:
+            self.tail = self.head = Node(value)
+        else:
+            self.tail.next = Node(value)
+            self.tail = self.tail.next
+        return self.tail
+
+
+    def add_multiple(self, values):
+        for v in values:
+            self.add(v)
