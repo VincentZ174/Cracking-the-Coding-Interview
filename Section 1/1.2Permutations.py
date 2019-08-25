@@ -1,5 +1,6 @@
-#create empty hash table
+# create empty hash table
 hash_table = {}
+
 
 def permutations(string, step = 0):
 
@@ -18,20 +19,26 @@ def permutations(string, step = 0):
         # recurse on the portion of the string that has not been swapped yet (now it's index will begin with step + 1)
         permutations(string_copy, step + 1)
 
-#insert function for hash table
+
+# insert function for hash table
 def insert(hash_table, key, value):
+    
     hash_table[key] = value
 
-#check if one word is a permutation of another
-def checkPerm(wordOne, wordTwo):
-    if wordOne == hash_table[wordOne]:
-        print wordOne + " is a permutation of " + wordTwo
-    else:
-        print wordOne + "is not a permutation of " + wordTwo
-        
-#get user input
-wordOne = raw_input("Enter first word: ")
-wordTwo = raw_input("Enter second word: ")
 
-permutations(wordTwo)
-checkPerm(wordOne, wordTwo)
+# check if one word is a permutation of another
+def check_perm(word_one, word_two):
+
+    if word_one == hash_table[word_one]:
+        print(word_one + " is a permutation of " + word_two)
+
+    else:
+        print(word_one + "is not a permutation of " + word_two)
+
+
+# get user input
+word_one = input("Enter first word: ")
+word_two = input("Enter second word: ")
+
+permutations(word_two)
+check_perm(word_one, word_two)

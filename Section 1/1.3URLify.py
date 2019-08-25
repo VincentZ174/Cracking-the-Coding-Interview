@@ -2,13 +2,19 @@
 
 regString = "Mr John Smith"
 
-def URLify(regString):
-	URL = ""
+
+def urlify(regString):
+	
+	url = ""
+	
 	for i in range(len(regString)):
 		if regString[i] == " ":
-			URL = URL + "%20"
+			url = url + "%20"
+			
 		else:
-			URL = URL + regString[i]
-	return URL
+			url = url + regString[i]
 
-print URLify(regString)
+	return url
+
+
+print(urlify(regString))
