@@ -1,45 +1,59 @@
 class ThreeInOne:
 
-	def __init__(self, sizePerStack):
-		self.numOfStacks = 3
-		self.array = [0] * (sizePerStack * self.numOfStacks)
-		self.sizes = [0] * self.numOfStacks
-		self.sizePerStack = sizePerStack
+    def __init__(self, size_per_stack):
+        
+        self.numOfStacks = 3
+        self.array = [0] * (size_per_stack * self.numOfStacks)
+        self.sizes = [0] * self.numOfStacks
+        self.size_per_stack = size_per_stack
 
-	def push(self, item, stackNum):
-		if self.isFull(stackNum):
-			raise Exception("Stack is full")
-		self.sizes[stackNum] += 1
-		self.array[self.topIndex(stackNum)] = item
+    def push(self, item, stack_num):
 
-	def pop(self, stackNum):
-		if self.isEmpty(stackNum):
-			raise Exception ("Stack is empty")
-		value = self.array[self.topIndex(stackNum)] = 0
-		self.sizes[stackNum] -= 1
-		return value
+        if self.is_full(stack_num):
+            raise Exception("Stack is full")
 
-	def peek(self, stackNum):
-		if self.isEmpty(stackNum):
-			raise Exception("Stack is empty")
-		return self.array[self.topIndex(stackNum)]
+        self.sizes[stack_num] += 1
+        self.array[self.top_index(stack_num)] = item
 
-	def isEmpty(self, stackNum):
-		return self.sizes[stackNum] == 0
+    def pop(self, stack_num):
 
-	def isFull(self, stackNum):
-		return self.sizes[stackNum] == self.sizePerStack
+        if self.is_empty(stack_num):
+            raise Exception("Stack is empty")
 
-	def topIndex(self, stackNum):
-		offset = stackNum * self.sizePerStack
-		return offset + self.sizes[stackNum] - 1
+        value = self.array[self.top_index(stack_num)] = 0
+        self.sizes[stack_num] -= 1
+
+        return value
+
+    def peek(self, stack_num):
+
+        if self.is_empty(stack_num):
+            raise Exception("Stack is empty")
+
+        return self.array[self.top_index(stack_num)]
+
+    def is_empty(self, stack_num):
+
+        return self.sizes[stack_num] == 0
+
+    def is_full(self, stack_num):
+
+        return self.sizes[stack_num] == self.size_per_stack
+
+    def top_index(self, stack_num):
+
+        offset = stack_num * self.size_per_stack
+
+        return offset + self.sizes[stack_num] - 1
+
 
 stack = ThreeInOne(10)
-print stack.isEmpty(1)
-stack.push(5,0)
-stack.push(10,1)
-stack.push(50,2)
-print stack.peek(0)
-print stack.peek(1)
-print stack.peek(2)
+print((stack.is_empty(1)))
 
+stack.push(5, 0)
+stack.push(10, 1)
+stack.push(50, 2)
+
+print((stack.peek(0)))
+print((stack.peek(1)))
+print((stack.peek(2)))

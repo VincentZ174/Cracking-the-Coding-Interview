@@ -1,41 +1,42 @@
 class Stack():
 
-	def __init__(self):
+    def __init__(self):
 
-		self.items = []
+        self.items = []
 
-	def __len__(self):
+    def __len__(self):
 
-		size = 0
-		for items in self.items:
-			size += 1
-		return size
+        size = 0
+        for items in self.items:
+            size += 1
+        return size
 
-	def __str__(self):
+    def __str__(self):
 
-		return ' '.join(str(x) for x in self.items)
+        return ' '.join(str(x) for x in self.items)
 
-	def push(self, item):
+    def push(self, item):
 
-		self.items.append(item)
+        self.items.append(item)
 
-	def push_multiple(self, items):
-		for item in items:
-			self.items.append(item)
+    def push_multiple(self, items):
 
-	def pop(self):
+        for item in items:
+            self.items.append(item)
 
-		return self.items.pop()
+    def pop(self):
 
-	def get_stack(self):
+        return self.items.pop()
 
-		return self.items
+    def get_stack(self):
 
-	def isEmpty(self):
+        return self.items
 
-		return self.items == []
+    def is_empty(self):
 
-	def peek(self):
+        return self.items == []
 
-		if not self.isEmpty():
-			return self.items[-1]
+    def peek(self):
+
+        if not self.is_empty():
+            return self.items[-1]
