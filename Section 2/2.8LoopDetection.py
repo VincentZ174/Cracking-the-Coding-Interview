@@ -1,21 +1,28 @@
 from linkedlist import LinkedList
 
-def loopDetect(ll):
-	node = ll.head
-	node = node.next
-	while node:
-		if node == ll.head:
-			print "Loop detected at:", node
-			break
-		node = node.next
 
-def setUp(ll):
-	node = ll.tail
-	node.next = ll.head
+def loop_detect(ll):
+
+    node = ll.head
+    node = node.next
+
+    while node:
+        if node == ll.head:
+
+            print("Loop detected at:", node)
+            break
+
+        node = node.next
+
+
+def set_up(ll):
+
+    node = ll.tail
+    node.next = ll.head
 
 
 ll = LinkedList()
-ll.add_multiple([1,2,3,4])
+ll.add_multiple([1, 2, 3, 4])
 
-setUp(ll)
-loopDetect(ll)
+set_up(ll)
+loop_detect(ll)
