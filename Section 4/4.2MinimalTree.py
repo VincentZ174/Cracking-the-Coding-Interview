@@ -25,6 +25,8 @@ def pre_order(tree):
         print(tree.value)
         pre_order(tree.left)
         pre_order(tree.right)
+    else:
+        return
 
 
 arr = [1, 2, 3, 4, 5, 6, 7, 8, 9]
